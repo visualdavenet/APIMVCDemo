@@ -1,21 +1,18 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="content-language" content="en" />
-        <meta name="google" content="notranslate" />
-        <title>Visualdavenet Demo Site</title>
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-language" content="en" />
+    <meta name="google" content="notranslate" />
+    <title>Visualdavenet Demo Site</title>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             @Html.ActionLink("Visualdave Demo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -29,12 +26,22 @@
                     </li>
                 </ul>
             </div>
+            <div class="navbar-nav ml-auto align-baseline">
+                <a class="github-button" href="https://github.com/visualdavenet" data-size="large" aria-label="Follow visualdavenet on GitHub">Code On Github</a>
+            </div>&nbsp;&nbsp;
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </nav>
     </body>
     <div class="container body-content">
         @RenderBody()
         <footer class="nav-menu d-none d-lg-block">
-            <p style="text-align:center;">&copy; @DateTime.Now.Year - Visualdave Demo Site</p>
+            <div style="text-align:center;">
+                <br /><br /><hr />
+                &copy; @DateTime.Now.Year - Visualdave Demo Site<br /><br />
+                <br />
+            </div>
         </footer>
     </div>
 

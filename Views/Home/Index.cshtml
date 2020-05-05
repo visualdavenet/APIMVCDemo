@@ -1,66 +1,66 @@
 ﻿
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Bootstrap 4 Header with HTML5 Video Background</title>
-    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Bootstrap 4 Header with HTML5 Video Background</title>
+        <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <style id="compiled-css" type="text/css">
-        header {
-            position: relative;
-            background-color: black;
-            height: 60vh;
-            min-height: 60vh;
-            min-width: 100%;
-            width: 100%;
-            overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        header video {
-              position: absolute;
-              object-fit: cover;
-              top: 50%;
-              left: 50%;
-              min-width: 100%;
-              min-height: 100%;
-              width: auto;
-              height: 60vh;
-              z-index: 0;
-              opacity: 0.8;
-              -ms-transform: translateX(-50%) translateY(-50%);
-              -moz-transform: translateX(-50%) translateY(-50%);
-              -webkit-transform: translateX(-50%) translateY(-50%);
-              transform: translateX(-50%) translateY(-50%);
+        <style id="compiled-css" type="text/css">
+            header {
+                position: relative;
+                background-color: black;
+                height: 60vh;
+                min-height: 60vh;
+                min-width: 100%;
+                width: 100%;
+                overflow: hidden;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
 
-        header .container {
-              position: relative;
-              z-index: 2;
-            }
+                header video {
+                    position: absolute;
+                    object-fit: cover;
+                    top: 50%;
+                    left: 50%;
+                    min-width: 100%;
+                    min-height: 100%;
+                    width: auto;
+                    height: 60vh;
+                    z-index: 0;
+                    opacity: 0.8;
+                    -ms-transform: translateX(-50%) translateY(-50%);
+                    -moz-transform: translateX(-50%) translateY(-50%);
+                    -webkit-transform: translateX(-50%) translateY(-50%);
+                    transform: translateX(-50%) translateY(-50%);
+                }
 
-        header .overlay {
-              position: absolute;
-              top: 0;
-              left: 0;
-              height: 100%;
-              width: auto;
-              background-color: black;
-              z-index: 1;
-            }
+                header .container {
+                    position: relative;
+                    z-index: 2;
+                }
+
+                header .overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: auto;
+                    background-color: black;
+                    z-index: 1;
+                }
 
             @@media (pointer: coarse) and (hover: none) {
-              header {
-                background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
-              }
-              header video {
-                  display: none;
-              }
-            }
-    </style>
+                header {
+                    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+                }
 
-</head>
-<body>
-    <header>
+                    header video {
+                        display: none;
+                    }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
             <div class="overlay"></div>
             <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                 <source src="~/Content/plane.mp4" type="video/mp4">
@@ -75,18 +75,6 @@
                     </div>
                 </div>
             </div>
+            <a class="github-button" href="https://github.com/visualdavenet" aria-label="Follow visualdavenet on GitHub">Follow visualdavenet</a>
         </header>
-
-        <script>
-            // tell the embed parent frame the height of the content
-            if (window.parent && window.parent.parent) {
-                window.parent.parent.postMessage(["resultsFrame", {
-                    height: document.body.getBoundingClientRect().height,
-                    slug: "enajc82d"
-                }], "*")
-            }
-
-            // always overwrite window.name, in case users try to set it manually
-            window.name = "result"
-        </script>
-</body>
+    </body>
