@@ -1,0 +1,92 @@
+﻿
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Bootstrap 4 Header with HTML5 Video Background</title>
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <style id="compiled-css" type="text/css">
+        header {
+            position: relative;
+            background-color: black;
+            height: 60vh;
+            min-height: 60vh;
+            min-width: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        header video {
+              position: absolute;
+              object-fit: cover;
+              top: 50%;
+              left: 50%;
+              min-width: 100%;
+              min-height: 100%;
+              width: auto;
+              height: 60vh;
+              z-index: 0;
+              opacity: 0.8;
+              -ms-transform: translateX(-50%) translateY(-50%);
+              -moz-transform: translateX(-50%) translateY(-50%);
+              -webkit-transform: translateX(-50%) translateY(-50%);
+              transform: translateX(-50%) translateY(-50%);
+            }
+
+        header .container {
+              position: relative;
+              z-index: 2;
+            }
+
+        header .overlay {
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100%;
+              width: auto;
+              background-color: black;
+              z-index: 1;
+            }
+
+            @@media (pointer: coarse) and (hover: none) {
+              header {
+                background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+              }
+              header video {
+                  display: none;
+              }
+            }
+    </style>
+
+</head>
+<body>
+    <header>
+            <div class="overlay"></div>
+            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source src="~/Content/plane.mp4" type="video/mp4">
+            </video>
+            <div class="container h-100">
+                <div class="d-flex h-100 text-center align-items-center">
+                    <div class="w-100 text-white">
+                        <p class="lead mb-0">Welcome to the</p>
+                        <h1 class="display-4" style="font-weight:bolder;">Visual Dave Website</h1>
+                        <p class="lead mb-0">This site demonstrates multiple coding techniques of modern websites.</p>
+                        <p class="lead mb-0">This landing page is coded using HTML5 Video and Bootstrap 4</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <script>
+            // tell the embed parent frame the height of the content
+            if (window.parent && window.parent.parent) {
+                window.parent.parent.postMessage(["resultsFrame", {
+                    height: document.body.getBoundingClientRect().height,
+                    slug: "enajc82d"
+                }], "*")
+            }
+
+            // always overwrite window.name, in case users try to set it manually
+            window.name = "result"
+        </script>
+</body>
