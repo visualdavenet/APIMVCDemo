@@ -1,18 +1,18 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@*<!DOCTYPE html>
+<html>*@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="content-language" content="en" />
     <meta name="google" content="notranslate" />
-    <title>Visualdavenet Demo Site</title>
+    <title>Visualdave Demo Site</title>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            @Html.ActionLink("Visualdave Demo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
+            @Html.ActionLink("Visualdave Demo Site", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -40,7 +40,7 @@
             </button>
         </nav>
     </body>
-    <div class="container body-content">
+    @*<div class="container body-content">*@
         @RenderBody()
         <footer class="nav-menu d-none d-lg-block">
             <div style="text-align:center;">
@@ -49,9 +49,9 @@
                 <br />
             </div>
         </footer>
-    </div>
+    @*</div>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-</html>
+@*</html>*@
