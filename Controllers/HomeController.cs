@@ -1,4 +1,6 @@
-﻿using RestSharp.Serializers;
+﻿using APIMVCDemo.Data.BusinessLogic;
+using APIMVCDemo.Models;
+using RestSharp.Serializers;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,9 +31,54 @@ namespace APIMVCDemo.Controllers
             return View(newsList);
         }
 
-        public ActionResult Contact()
+        public ActionResult SignUp()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Customer Sign Up";
+
+            return View();
+        }
+
+        public ActionResult CustomerList()
+        {
+            ViewBag.Message = "Customer List";
+
+            var result = CustomerProcessor.LoadCustomers();
+            List<Customer> customer = new List<Customer>();
+
+            foreach (var row in result)
+            {
+                customer.Add(new Customer
+                {
+                    FirstName = row.FirstName,
+                    LastName = row.LastName,
+                    Occupation = row.Occupation,
+                    City = row.City,
+                    State = row.State,
+                    Email = row.Email,
+                    ImageURL = row.ImageURL
+                });
+            }
+
+            return View(customer);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignUp(Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                int recordsCreated = CustomerProcessor.CreateCustomer(
+                    customer.FirstName,
+                    customer.LastName,
+                    customer.Occupation,
+                    customer.City,
+                    customer.State,
+                    customer.Email,
+                    customer.ImageURL);
+
+                return RedirectToAction("CustomerList");
+            }
 
             return View();
         }
