@@ -6,7 +6,7 @@
 }
     <div style="margin: 0 auto; width:80%">
         <div style="height:25px;"></div>
-        <h2>Customer List</h2>
+        <h2 style="color:turquoise;">Customer List</h2>
 
         <table class="table">
             <tr>
@@ -60,5 +60,5 @@
 
         </table>
         <hr />
-        @Html.ActionLink("Add New Customer", "SignUp", "Home", new { area = "" }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Add New Customer", "SignUp", "Home", new { area = "" }, new { @class = "btn btn-primary", @style = "background-color:turquoise; border-color:turquoise;" })
     </div>
