@@ -7,7 +7,9 @@
         <style id="compiled-css" type="text/css">
             header {
                 position: relative;
-                background-color: black;
+                background-size: cover;
+                background-image: url('../../Content/bg.jpg');
+                background-repeat: no-repeat;
                 height: 80vh;
                 min-height: 90vh;
                 min-width: 100%;
@@ -16,7 +18,7 @@
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
 
-                header video {
+                /*header video {
                     position: absolute;
                     object-fit: cover;
                     top: 50%;
@@ -36,19 +38,19 @@
                 header .container {
                     position: relative;
                     z-index: 2;
-                }
+                }*/
 
                 header .overlay {
-                    position: absolute;
+                    position: initial;
                     top: 0;
-                    left: 0;
+                    left: 200px;
                     height: 100%;
                     width: auto;
-                    background-color: black;
+                    opacity: 1.8;
                     z-index: 1;
                 }
 
-            @@media (pointer: coarse) and (hover: none) {
+            /*@@media (pointer: coarse) and (hover: none) {
                 header {
                     background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
                 }
@@ -56,21 +58,21 @@
                     header video {
                         display: none;
                     }
-            }
+            }*/
         </style>
     </head>
     <body>
         <header>
-            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            @*<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                 <source src="~/Content/plane.mp4" type="video/mp4">
-            </video>
+            </video>*@
             <div class="container h-100">
                 <div class="d-flex h-100 text-center align-items-center">
                     <div class="w-100 text-white">
                         <p class="lead mb-0">Welcome to the</p>
                         <h1 class="display-4" style="font-weight:bolder;">Visual Dave Website</h1>
                         <p class="lead mb-0">This site demonstrates multiple coding techniques of modern websites.</p>
-                        <p class="lead mb-0">This landing page is coded using HTML5 Video and Bootstrap 4</p>
+                        <p class="lead mb-0">This website is coded using MVC 5.2, SQL Server, Dapper, HTML5 and Bootstrap 4</p>
                     </div>
                 </div>
             </div>
