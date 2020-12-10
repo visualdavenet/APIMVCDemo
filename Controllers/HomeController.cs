@@ -62,6 +62,30 @@ namespace APIMVCDemo.Controllers
             return View(customer);
         }
 
+        public JsonResult GetCustomers()
+        {
+            ViewBag.Message = "Customer List";
+
+            var result = CustomerProcessor.LoadCustomers();
+            List<Customer> customer = new List<Customer>();
+
+            foreach (var row in result)
+            {
+                customer.Add(new Customer
+                {
+                    FirstName = row.FirstName,
+                    LastName = row.LastName,
+                    Occupation = row.Occupation,
+                    City = row.City,
+                    State = row.State,
+                    Email = row.Email,
+                    ImageURL = row.ImageURL
+                });
+            }
+
+            return Json(customer, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SignUp(Customer customer)

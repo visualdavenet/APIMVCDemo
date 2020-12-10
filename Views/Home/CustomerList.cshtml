@@ -1,15 +1,56 @@
-﻿@model IEnumerable<APIMVCDemo.Models.Customer>
+﻿@*@model IEnumerable<APIMVCDemo.Models.Customer>*@
 
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/knockout-3.5.1.js"></script>
+<script src="~/Scripts/knockout.mapping-latest.js" type="text/javascript"></script>
 @{
     ViewBag.Title = "CustomerList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <div style="margin: 0 auto; width:80%">
-        <div style="height:25px;"></div>
-        <h2 style="color:turquoise;">Customer List</h2>
-
-        <table class="table">
+<div style="margin: 0 auto; width:80%">
+    <div style="height:25px;"></div>
+    <h2 style="color:turquoise;">Customer List using Knockout</h2>
+    <table class="table">
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+            <th align="left">
+                First Name
+            </th>
+            <th align="left">
+                Last Name
+            </th>
+            <th align="left">
+                Occupation
+            </th>
+            <th align="left">
+                Contact Email
+            </th>
+        </tr>
+        <tbody data-bind="foreach: Customers">
             <tr>
+                <td>
+                    <span><img data-bind="attr:{src: ImageURL}" class="rounded-circle" style="width:100px; height:100px;"></span>
+                </td>
+                <td>
+                    <span data-bind="text: FirstName"></span>
+                </td>
+                <td>
+                    <span data-bind="text: LastName"></span>
+                </td>
+                <td>
+                    <span data-bind="text: Occupation"></span>
+                </td>
+                <td>
+                    <span data-bind="text: Email"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    @*<table class="table">*@
+        @*<tr>
                 <th>&nbsp;</th>
                 <th>
                     @Html.DisplayNameFor(model => model.FirstName)
@@ -56,9 +97,26 @@
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
                 </tr>
-            }
+            }*@
+        @*<tr>
+    </table>*@
+    <hr />
+    @Html.ActionLink("Add New Customer", "SignUp", "Home", new { area = "" }, new { @class = "btn btn-primary", @style = "background-color:turquoise; border-color:turquoise;" })
+</div>
 
-        </table>
-        <hr />
-        @Html.ActionLink("Add New Customer", "SignUp", "Home", new { area = "" }, new { @class = "btn btn-primary", @style = "background-color:turquoise; border-color:turquoise;" })
-    </div>
+<script type="text/javascript">
+
+    var AppViewModel = function () {
+        var self = this;
+        self.Customers = ko.mapping.fromJS([]);
+
+        $.getJSON('/Home/GetCustomers/', function (data) {
+            ko.mapping.fromJS(data, {}, self.Customers);
+        });
+    }
+
+    $(document).ready(function () {
+        var viewModel = new AppViewModel();
+        ko.applyBindings(viewModel);
+    });
+</script>
