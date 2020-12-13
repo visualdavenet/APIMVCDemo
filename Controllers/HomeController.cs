@@ -1,5 +1,7 @@
-﻿using APIMVCDemo.Data.BusinessLogic;
+﻿using APIMVCDemo.CosmosDB;
+using APIMVCDemo.Data.BusinessLogic;
 using APIMVCDemo.Models;
+using Microsoft.Azure.Cosmos.Table;
 using RestSharp.Serializers;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml;
@@ -18,6 +21,12 @@ namespace APIMVCDemo.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public async Task<ActionResult> CustomerListCosmoDB()
+        {
+            List<CustomerEntity> cosmoCustomerList = await GetCustomersCosmo();
+            return View(cosmoCustomerList);
         }
 
         public ActionResult API()
@@ -85,6 +94,13 @@ namespace APIMVCDemo.Controllers
 
             return Json(customer, JsonRequestBehavior.AllowGet);
         }
+
+        public async Task<List<CustomerEntity>> GetCustomersCosmo() 
+        {
+            CloudTable table = await Common.CreateTableAsync("Customers");
+            List<CustomerEntity> entities = table.ExecuteQuery(new TableQuery<CustomerEntity>()).ToList();
+            return entities;
+        } 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
